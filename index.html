@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>ひらがな たんけん</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&family=Kaisei+Tokumin&display=swap');
 
 :root{
-  --paper:#FAF4E6;
+  --paper:#9DCB8A;
   --ink:#4A3728;
   --red:#E2725B;
   --blue:#5B8DD9;
@@ -25,7 +26,7 @@ html,body{
   margin:0; padding:0;
   width:100%;
   background:var(--paper);
-  font-family:'Yomogi','Hiragino Maru Gothic ProN','Rounded Mplus 1c',sans-serif;
+  font-family:'UD デジタル 教科書体 N-R','UDDigiKyokashoN-R','BIZ UDPMincho','HGS教科書体','Kaisei Tokumin',serif;
   color:var(--ink);
   overscroll-behavior:none;
   user-select:none;
@@ -35,7 +36,7 @@ html,body{
 #app{
   max-width:720px;
   margin:0 auto;
-  padding:10px 10px 18px;
+  padding:10px clamp(4px,2vw,10px) 18px;
   min-height:100vh;
   display:flex;
   flex-direction:column;
@@ -50,7 +51,7 @@ html,body{
   align-items:stretch;
 }
 .box{
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:3px solid var(--ink);
   border-radius:16px;
   box-shadow:2px 3px 0 rgba(0,0,0,0.08);
@@ -95,7 +96,7 @@ html,body{
 }
 .illust-box{
   flex:1 1 40%;
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:3px solid var(--ink);
   border-radius:20px;
   box-shadow:2px 3px 0 rgba(0,0,0,0.08);
@@ -134,9 +135,9 @@ html,body{
 .input-box{
   width:clamp(34px, 9vw, 46px);
   height:clamp(34px, 9vw, 46px);
-  border:3px dashed var(--line);
+  border:3px solid var(--line);
   border-radius:10px;
-  background:#FFFDF8;
+  background:#F8F0DC;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -184,40 +185,60 @@ html,body{
 
 /* ---------- GOJUON TABLE ---------- */
 .table-wrap{
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:3px solid var(--ink);
   border-radius:18px;
   box-shadow:2px 3px 0 rgba(0,0,0,0.08);
-  padding:10px 10px 6px;
-  overflow-x:auto;
+  padding:8px clamp(4px,2vw,10px) 6px;
+  overflow-x:hidden;
   flex:1;
   display:flex;
   align-items:center;
   justify-content:center;
+  width:100%;
+}
+.gojuon-layout{
+  display:flex;
+  flex-direction:row-reverse;
+  align-items:stretch;
+  width:100%;
+  gap:clamp(4px,1.5vw,10px);
 }
 .gojuon{
   display:flex;
   flex-direction:row-reverse;
-  gap:5px;
-  width:max-content;
-  margin:0 auto;
+  flex:1 1 auto;
+  min-width:0;
+  gap:clamp(2px,1.2vw,5px);
+}
+.special-area{
+  display:flex;
+  flex-direction:row;
+  flex:0 0 auto;
+  gap:clamp(2px,1vw,6px);
 }
 .column{
   display:flex;
   flex-direction:column;
-  gap:5px;
+  align-items:center;
+  flex:1 1 0;
+  min-width:0;
+  gap:clamp(2px,1.2vw,5px);
   border-right:1px solid var(--line);
-  padding:0 5px;
+  padding:0 clamp(1px,0.6vw,5px);
 }
 .column:first-child{border-right:none;}
 .kana-btn{
-  width:43px;
-  height:43px;
-  font-size:21px;
+  width:100%;
+  aspect-ratio:1/1;
+  max-width:46px;
+  max-height:46px;
+  padding:0;
+  font-size:clamp(13px,4.2vw,21px);
   font-family:inherit;
   font-weight:bold;
   color:var(--ink);
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:2px solid var(--ink);
   border-radius:10px;
   display:flex;
@@ -231,13 +252,19 @@ html,body{
   background:#F4ECD8;
 }
 .kana-blank{
-  width:43px;
-  height:43px;
+  width:100%;
+  aspect-ratio:1/1;
+  max-width:46px;
+  max-height:46px;
 }
-.special-column{
+.special-group{
   border-right:2px dashed var(--line);
-  margin-right:2px;
-  padding-right:8px;
+  margin-right:clamp(1px,0.5vw,2px);
+  padding-right:clamp(2px,1.2vw,8px);
+}
+.special-area .column{
+  flex:0 0 auto;
+  width:clamp(30px,9vw,46px);
 }
 .kana-btn.dakuten-btn{
   background:var(--yellow);
@@ -261,6 +288,7 @@ html,body{
   text-align:center;
   color:var(--ink);
   line-height:1.2;
+
   margin-top:2px;
 }
 
@@ -288,7 +316,7 @@ html,body{
 .score-box{
   flex:1;
   text-align:center;
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:3px solid var(--ink);
   border-radius:14px;
   padding:8px 10px;
@@ -340,7 +368,7 @@ html,body{
 }
 .center-overlay.active{display:flex;}
 .overlay-card{
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:4px solid var(--ink);
   border-radius:24px;
   padding:30px 40px;
@@ -354,6 +382,16 @@ html,body{
 }
 .overlay-card.gameover .big{color:var(--red);}
 .overlay-card.levelup .big{color:var(--blue-deep);}
+.overlay-card.gameclear .big{color:var(--green);}
+.overlay-card.gameclear{
+  border-color:var(--green);
+  box-shadow:4px 6px 0 rgba(111,174,94,0.35);
+}
+.clear-time{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--line);
+}
 .overlay-card .sub{
   margin-top:8px;
   font-size:18px;
@@ -370,17 +408,45 @@ html,body{
 }
 
 @media (max-width:480px){
-  .kana-btn{
-    width:36px;
-    height:36px;
-    font-size:17px;
-  }
-  .kana-blank{
-    width:36px;
-    height:36px;
-  }
   .target-char{font-size:clamp(22px,6vw,32px);}
   .input-box{width:clamp(30px,8vw,36px); height:clamp(30px,8vw,36px);}
+}
+
+/* スマホ画面：特殊文字（っ・〃・拗音・促音・ー）を下のエリアにまとめ、
+   メインの「あ〜わ」表のボタンを大きく表示する */
+@media (max-width:600px){
+  .gojuon-layout{
+    flex-direction:column;
+    gap:8px;
+  }
+  .gojuon{
+    width:100%;
+  }
+  .special-area{
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+    padding-top:6px;
+    border-top:2px dashed var(--line);
+  }
+  .special-area .column{
+    flex-direction:row;
+    width:auto;
+    flex:0 0 auto;
+    gap:6px;
+    border-right:none;
+    margin-right:0;
+    padding-right:0;
+  }
+  .special-area .kana-blank{
+    display:none;
+  }
+  .special-area .kana-btn{
+    width:clamp(34px,9vw,44px);
+    max-width:44px;
+    max-height:44px;
+  }
 }
 
 /* ---------- START SCREEN ---------- */
@@ -396,7 +462,7 @@ html,body{
 }
 .start-screen.hidden{display:none;}
 .start-card{
-  background:#FFFDF8;
+  background:#F8F0DC;
   border:4px solid var(--ink);
   border-radius:28px;
   box-shadow:4px 6px 0 rgba(0,0,0,0.12);
@@ -474,7 +540,10 @@ html,body{
 
   <!-- GOJUON TABLE -->
   <div class="table-wrap">
-    <div class="gojuon" id="gojuonTable"></div>
+    <div class="gojuon-layout" id="gojuonLayout">
+      <div class="gojuon" id="gojuonTable"></div>
+      <div class="special-area" id="specialArea"></div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -499,6 +568,14 @@ html,body{
   <div class="overlay-card gameover">
     <div class="big">GAME OVER</div>
     <div class="sub">またチャレンジしよう！</div>
+  </div>
+</div>
+
+<div class="center-overlay" id="gameClearOverlay">
+  <div class="overlay-card gameclear">
+    <div class="big"><span class="sparkle">🎉</span> GAME CLEAR! <span class="sparkle">🎉</span></div>
+    <div class="sub">５つの レベルを ぜんぶ クリアしたよ！<br>すごいね！</div>
+    <div class="clear-time" id="clearTimeText"></div>
   </div>
 </div>
 
@@ -1231,6 +1308,8 @@ function ensureAudio(){
   }
 }
 
+let audioUnlockedOnce = false;
+
 function unlockAudio() {
   ensureAudio();
   if (audioCtx) {
@@ -1239,6 +1318,15 @@ function unlockAudio() {
     source.buffer = buffer;
     source.connect(audioCtx.destination);
     source.start(0);
+  }
+  // 初めて音声がアンロックされた瞬間、スタート画面のBGMを頭から鳴らし直す
+  // （ブラウザの自動再生制限のため、ページ読み込み時点では無音で待機している）
+  if(!audioUnlockedOnce){
+    audioUnlockedOnce = true;
+    if(els.startScreen && !els.startScreen.classList.contains("hidden")){
+      stopOpeningBGM();
+      playOpeningBGM();
+    }
   }
 }
 
@@ -1286,12 +1374,140 @@ function playGameOver(){
   [400,340,280,200].forEach((f,i)=> tone(f, i*0.22, 0.3, "sawtooth", 0.18));
 }
 
+function playGameClear(){
+  ensureAudio();
+
+  // セクション1：勝利のファンファーレ・モチーフ（ハ長調）
+  const motifC = [
+    [523.25,0.00,0.16], //C5
+    [659.25,0.16,0.16], //E5
+    [783.99,0.32,0.16], //G5
+    [1046.50,0.48,0.45],//C6
+    [783.99,1.05,0.16], //G5
+    [659.25,1.21,0.16], //E5
+    [523.25,1.37,0.16], //C5
+    [659.25,1.53,0.16], //E5
+    [783.99,1.69,0.16], //G5
+    [1046.50,1.85,0.50] //C6（伸ばす）
+  ];
+  motifC.forEach(([f,s,d]) => tone(f,s,d,"square",0.16));
+  tone(130.81, 0.00, 1.00, "sine", 0.10); // 低音の支え C3
+  tone(196.00, 1.00, 1.30, "sine", 0.10); // 低音の支え G3
+
+  // セクション2：同じモチーフを一段高く（ニ長調）で再度盛り上げる
+  const motifD = [
+    [587.33,2.45,0.16], //D5
+    [739.99,2.61,0.16], //F#5
+    [880.00,2.77,0.16], //A5
+    [1174.66,2.93,0.45],//D6
+    [880.00,3.50,0.16], //A5
+    [739.99,3.66,0.16], //F#5
+    [587.33,3.82,0.16], //D5
+    [739.99,3.98,0.16], //F#5
+    [880.00,4.14,0.16], //A5
+    [1174.66,4.30,0.50] //D6
+  ];
+  motifD.forEach(([f,s,d]) => tone(f,s,d,"square",0.17));
+  tone(146.83, 2.45, 1.00, "sine", 0.10); // 低音の支え D3
+  tone(220.00, 3.45, 1.30, "sine", 0.10); // 低音の支え A3
+
+  // セクション3：さらに一段高く（ホ長調）で最高潮に
+  const motifE = [
+    [659.25,4.90,0.16], //E5
+    [830.61,5.06,0.16], //G#5
+    [987.77,5.22,0.16], //B5
+    [1318.51,5.38,0.45],//E6
+    [987.77,5.95,0.16], //B5
+    [830.61,6.11,0.16], //G#5
+    [659.25,6.27,0.16], //E5
+    [830.61,6.43,0.16], //G#5
+    [987.77,6.59,0.16], //B5
+    [1318.51,6.75,0.50] //E6
+  ];
+  motifE.forEach(([f,s,d]) => tone(f,s,d,"square",0.18));
+  tone(164.81, 4.90, 1.00, "sine", 0.10); // 低音の支え E3
+  tone(246.94, 5.90, 1.30, "sine", 0.10); // 低音の支え B3
+
+  // セクション4：駆け上がる音階 → 大きな三和音で締める
+  const runUp = [523.25,587.33,659.25,698.46,783.99,880.00,987.77,1046.50];
+  runUp.forEach((f,i) => tone(f, 7.35 + i*0.13, 0.15, "square", 0.19));
+  tone(1046.50, 8.50, 1.40, "square",   0.24); // C6
+  tone(1318.51, 8.50, 1.40, "triangle", 0.18); // E6
+  tone(1567.98, 8.50, 1.40, "triangle", 0.18); // G6
+  tone(523.25,  8.50, 1.40, "sine",     0.14); // C5（低音の支え）
+
+  // セクション5：きらきらした余韻でやさしく締める
+  const sparkle = [1567.98,1318.51,1046.50,783.99,659.25,523.25,783.99,1046.50];
+  sparkle.forEach((f,i) => tone(f, 10.00 + i*0.55, 0.6, "triangle", 0.10));
+  tone(261.63, 10.00, 4.8, "sine", 0.05); // 最後まで残る低音の余韻
+}
+
+/* -----------------------------------------------------
+   オープニング画面 BGM
+   モーツァルト「アイネ・クライネ・ナハトムジーク」第1楽章 冒頭風
+   （フォルテの上昇アルペジオ＝呼びかけ → ピアノの下降スケール＝答え、を交互に）
+   10秒ループ・ト長調（G major）
+----------------------------------------------------- */
+let openingLoopTimer = null;
+let openingLoopActive = false;
+
+function scheduleOpeningLoop(){
+  if(!openingLoopActive) return;
+
+  // 第1小節：フォルテの上昇アルペジオ「呼びかけ」（G - D - G - B）
+  const callA = [196.00,293.66,392.00,493.88]; // G3 D4 G4 B4
+  callA.forEach((f,i) => tone(f, i*0.5, 0.4, "triangle", 0.20));
+  tone(98.00, 0.0, 1.9, "sine", 0.045); // 低音の支え（G2）
+
+  // 第2小節：ピアノの下降スケール「答え」（D5→D4）
+  const answerA = [587.33,523.25,493.88,440.00,392.00,369.99,329.63,293.66];
+  answerA.forEach((f,i) => tone(f, 2.0 + i*0.25, 0.22, "sine", 0.10));
+
+  // 第3小節：属調（D）への上昇アルペジオ「呼びかけ」（D - A - D - F#）
+  const callB = [293.66,440.00,587.33,739.99]; // D4 A4 D5 F#5
+  callB.forEach((f,i) => tone(f, 4.0 + i*0.5, 0.4, "triangle", 0.20));
+  tone(146.83, 4.0, 1.9, "sine", 0.045); // 低音の支え（D3）
+
+  // 第4小節：ピアノの下降スケール「答え」（G5→G4）
+  const answerB = [783.99,739.99,659.25,587.33,523.25,493.88,440.00,392.00];
+  answerB.forEach((f,i) => tone(f, 6.0 + i*0.25, 0.22, "sine", 0.10));
+
+  // 第5小節：フォルテで締める終止（G - B - D、最後は伸ばす）
+  tone(392.00, 8.0, 0.4, "triangle", 0.20); // G4
+  tone(493.88, 8.5, 0.4, "triangle", 0.20); // B4
+  tone(587.33, 9.0, 0.82, "triangle", 0.22); // D5（伸ばすが、次のループの頭と重ならないよう余裕を持たせる）
+  tone(196.00, 8.0, 1.7, "sine", 0.05);     // 低音の支え（G3）
+
+  openingLoopTimer = setTimeout(scheduleOpeningLoop, 10000);
+}
+
+function playOpeningBGM(){
+  if(openingLoopActive) return;
+  openingLoopActive = true;
+  scheduleOpeningLoop();
+}
+
+function stopOpeningBGM(){
+  openingLoopActive = false;
+  if(openingLoopTimer){
+    clearTimeout(openingLoopTimer);
+    openingLoopTimer = null;
+  }
+}
+
+function maybeStartOpeningBGM(){
+  if(els.startScreen && !els.startScreen.classList.contains("hidden")){
+    playOpeningBGM();
+  }
+}
+
 /* =====================================================
    ゲーム状態
 ===================================================== */
 let level = 1;
 let hp = 5;
 let score = 0;
+let gameStartTime = 0;
 let questionsQueue = [];
 let questionIndex = 0;
 let currentWord = "";
@@ -1312,6 +1528,7 @@ const els = {
   inputBoxes: document.getElementById("inputBoxes"),
   feedbackPop: document.getElementById("feedbackPop"),
   gojuonTable: document.getElementById("gojuonTable"),
+  specialArea: document.getElementById("specialArea"),
   scoreNum: document.getElementById("scoreNum"),
   soundBtn: document.getElementById("soundBtn"),
   quitBtn: document.getElementById("quitBtn"),
@@ -1319,6 +1536,8 @@ const els = {
   levelUpOverlay: document.getElementById("levelUpOverlay"),
   levelUpSub: document.getElementById("levelUpSub"),
   gameOverOverlay: document.getElementById("gameOverOverlay"),
+  gameClearOverlay: document.getElementById("gameClearOverlay"),
+  clearTimeText: document.getElementById("clearTimeText"),
   startScreen: document.getElementById("startScreen"),
   startBtn: document.getElementById("startBtn"),
 };
@@ -1333,10 +1552,15 @@ function shuffle(arr){
 }
 
 /* -----------------------------------------------------
-   五十音表の動的生成（特殊列を2列にして配置を美しく整列！）
+   五十音表の動的生成
+   メインの「あ〜わ」表（10列）と、特殊文字エリア（〃・゜・ー・っ・ゃゅょ）を
+   別々のコンテナに分けて構築する。
+   スマホでは特殊文字エリアを下の行にまとめて表示し、メイン表のボタンを大きくする。
 ----------------------------------------------------- */
 function buildGojuonTable(){
   els.gojuonTable.innerHTML = "";
+  els.specialArea.innerHTML = "";
+
   GOJUON_COLUMNS.forEach(col => {
     const colDiv = document.createElement("div");
     colDiv.className = "column";
@@ -1357,9 +1581,38 @@ function buildGojuonTable(){
     els.gojuonTable.appendChild(colDiv);
   });
 
-  // 特殊列1（左端から2番目）：記号グループ（〃、゜、ー、空白、空白）
+  // 特殊グループ2（小書きグループ）：促音（っ）、拗音（ゃ、ゅ、ょ）
+  const specialCol2 = document.createElement("div");
+  specialCol2.className = "column special-group";
+
+  // 1. 促音（っ）
+  const sokuonBtn = document.createElement("button");
+  sokuonBtn.className = "kana-btn sokuon-btn";
+  sokuonBtn.type = "button";
+  sokuonBtn.textContent = "っ";
+  sokuonBtn.addEventListener("click", () => handleLetterClick("っ"));
+  specialCol2.appendChild(sokuonBtn);
+
+  // 2. 拗音（ゃ、ゅ、ょ）
+  ["ゃ","ゅ","ょ"].forEach(ch => {
+    const btn = document.createElement("button");
+    btn.className = "kana-btn sokuon-btn";
+    btn.type = "button";
+    btn.textContent = ch;
+    btn.addEventListener("click", () => handleLetterClick(ch));
+    specialCol2.appendChild(btn);
+  });
+
+  // 空きを埋めるためのブランク（デスクトップでの縦並び整列用、スマホでは非表示）
+  const blankCol2 = document.createElement("div");
+  blankCol2.className = "kana-blank";
+  specialCol2.appendChild(blankCol2);
+
+  els.specialArea.appendChild(specialCol2);
+
+  // 特殊グループ1（記号グループ）：濁点（〃）、半濁点（゜）、長音（ー）
   const specialCol1 = document.createElement("div");
-  specialCol1.className = "column special-column";
+  specialCol1.className = "column special-group";
 
   // 1. 濁点
   const dakutenBtn = document.createElement("button");
@@ -1387,43 +1640,14 @@ function buildGojuonTable(){
   choonBtn.addEventListener("click", () => handleLetterClick("ー"));
   specialCol1.appendChild(choonBtn);
 
-  // 空きを埋めるためのブランク
+  // 空きを埋めるためのブランク（デスクトップでの縦並び整列用、スマホでは非表示）
   for(let i = 0; i < 2; i++){
     const blank = document.createElement("div");
     blank.className = "kana-blank";
     specialCol1.appendChild(blank);
   }
 
-  els.gojuonTable.appendChild(specialCol1);
-
-  // 特殊列2（左端）：小書きグループ（っ、ゃ、ゅ、ょ、空白）
-  const specialCol2 = document.createElement("div");
-  specialCol2.className = "column special-column";
-
-  // 1. 促音（っ）
-  const sokuonBtn = document.createElement("button");
-  sokuonBtn.className = "kana-btn sokuon-btn";
-  sokuonBtn.type = "button";
-  sokuonBtn.textContent = "っ";
-  sokuonBtn.addEventListener("click", () => handleLetterClick("っ"));
-  specialCol2.appendChild(sokuonBtn);
-
-  // 2. 拗音（ゃ、ゅ、ょ）
-  ["ゃ","ゅ","ょ"].forEach(ch => {
-    const btn = document.createElement("button");
-    btn.className = "kana-btn sokuon-btn";
-    btn.type = "button";
-    btn.textContent = ch;
-    btn.addEventListener("click", () => handleLetterClick(ch));
-    specialCol2.appendChild(btn);
-  });
-
-  // 空きを埋めるためのブランク
-  const blankCol2 = document.createElement("div");
-  blankCol2.className = "kana-blank";
-  specialCol2.appendChild(blankCol2);
-
-  els.gojuonTable.appendChild(specialCol2);
+  els.specialArea.appendChild(specialCol1);
 }
 
 function renderHeader(){
@@ -1694,6 +1918,13 @@ function onTimeUp(){
 function levelUp(){
   gameActive = false;
   clearInterval(timerInterval);
+
+  // LV5をクリアしたらゲームクリア！
+  if(level === 5){
+    gameClear();
+    return;
+  }
+
   playFanfare();
   const nextLevel = level + 1;
   const mode = (nextLevel - 1) % 5 + 1;
@@ -1726,6 +1957,22 @@ function levelUp(){
   }, 2200);
 }
 
+function gameClear(){
+  playGameClear();
+  const elapsedSec = Math.max(0, Math.round((Date.now() - gameStartTime) / 1000));
+  const mm = Math.floor(elapsedSec / 60);
+  const ss = String(elapsedSec % 60).padStart(2, "0");
+  els.clearTimeText.textContent = `クリアタイム ${mm}:${ss}`;
+  els.gameClearOverlay.classList.add("active");
+  const myToken = gameToken;
+  setTimeout(() => {
+    if(myToken !== gameToken) return;
+    els.gameClearOverlay.classList.remove("active");
+    els.startScreen.classList.remove("hidden");
+    playOpeningBGM();
+  }, 15300);
+}
+
 function gameOver(){
   gameActive = false;
   clearInterval(timerInterval);
@@ -1745,6 +1992,7 @@ function startGame(){
   level = 1;
   hp = 5;
   score = 0;
+  gameStartTime = Date.now();
   dakutenWait = false;
   handakutenWait = false;
   if (els.dakutenBtn) els.dakutenBtn.classList.remove("toggle-active");
@@ -1774,11 +2022,14 @@ els.quitBtn.addEventListener("click", () => {
   clearInterval(timerInterval);
   els.levelUpOverlay.classList.remove("active");
   els.gameOverOverlay.classList.remove("active");
+  els.gameClearOverlay.classList.remove("active");
   els.startScreen.classList.remove("hidden");
+  playOpeningBGM();
 });
 
 els.startBtn.addEventListener("click", () => {
   unlockAudio(); 
+  stopOpeningBGM();
   els.startScreen.classList.add("hidden");
   startGame();
 });
@@ -1787,8 +2038,12 @@ els.startBtn.addEventListener("click", () => {
 buildGojuonTable();
 renderHeader();
 
-document.addEventListener("touchstart", () => { unlockAudio(); }, {once:true, passive:true});
-document.addEventListener("click", () => { unlockAudio(); }, {once:true});
+// ページ読み込み直後にBGMの再生を試みる（ブラウザの自動再生制限がない場合はそのまま鳴り、
+// 制限がある場合は無音で待機し、最初のタップ・クリックで自動的に鳴り始める）
+maybeStartOpeningBGM();
+
+document.addEventListener("touchstart", () => { unlockAudio(); maybeStartOpeningBGM(); }, {once:true, passive:true});
+document.addEventListener("click", () => { unlockAudio(); maybeStartOpeningBGM(); }, {once:true});
 </script>
 </body>
 </html>
